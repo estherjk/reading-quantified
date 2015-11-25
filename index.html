@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reading-quantified">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reading Quantified | Esther Jun Kim</title>
+
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64 128x128" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/assets/favicon-152.png">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="wrap-content">
+        <div class="container">
+          <div class="page-header">
+            <h1 class="text-center">Reading Quantified</h1>
+          </div>
+        </div>
+
+        <div class="container" ng-controller="DashboardCtrl">
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-6">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h2 class="panel-title">Number of books finished</h2>
+                </div>
+
+                <div class="panel-body text-center">
+                  <p class="kpi-value">{{ numberOfBooks }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-6">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h2 class="panel-title">Average days to finish</h2>
+                </div>
+
+                <div class="panel-body text-center">
+                  <p class="kpi-value">{{ getAverageDaysToFinish() | number : 1 }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h2 class="panel-title">Books finished</h2>
+                </div>
+
+                <table class="table table-hover">
+                  <tr>
+                    <th>Title</th>
+                    <th class="text-right">Date started</th>
+                    <th class="text-right">Date finished</th>
+                    <th class="text-right">Days to finish</th>
+                  </tr>
+
+                  <tr ng-repeat="book in books">
+                    <td>{{ book.title }}</td>
+                    <td class="text-right">{{ book.dateStarted.iso | date : 'MMM dd, yyyy' }}</td>
+                    <td class="text-right">{{ book.dateFinished.iso | date : 'MMM dd, yyyy' }}</td>
+                    <td class="text-right">{{ book.daysToFinish }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p>
+          <a href="http://drejkim.com/blog/2015/11/24/introducing-reading-quantified">Learn more</a> &middot;
+          <a href="https://github.com/drejkim/reading-quantified" target="_blank">GitHub</a> &middot;
+          <a href="https://trello.com/b/mgqBN7ZV" target="_blank">Trello</a>
+        </p>
+        <p>
+          &#x000A9; 2015 <a href="http://www.drejkim.com">Esther Jun Kim</a>.
+        </p>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+  </body>
+</html>
