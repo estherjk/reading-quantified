@@ -47,8 +47,30 @@ body {
   padding: 0;
 }
 
+/*** Global styles ***/
+
+.float-right {
+  float: right;
+}
+
 /*** Metrics styles ***/
 
 .kpi-value {
   font-size: 4em;
+}
+
+/*** Table styles ***/
+
+.table-dashboard>thead>tr>th.selected {
+  background-color: #DAECFB;
+}
+
+.table-dashboard>thead>tr>th>a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.table-dashboard>thead>tr>th>a:hover {
+  text-decoration: none;
 }

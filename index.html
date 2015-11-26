@@ -9,6 +9,7 @@
     <link rel="apple-touch-icon-precomposed" type="image/png" href="/assets/favicon-152.png">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
@@ -55,20 +56,56 @@
                   <h2 class="panel-title">Books finished</h2>
                 </div>
 
-                <table class="table table-hover">
-                  <tr>
-                    <th>Title</th>
-                    <th class="text-right">Date started</th>
-                    <th class="text-right">Date finished</th>
-                    <th class="text-right">Days to finish</th>
-                  </tr>
+                <table class="table table-striped table-hover table-dashboard" ng-controller="TableCtrl">
+                  <thead>
+                    <tr>
+                      <th class="col-xs-4" ng-class="{'selected': predicate === 'title'}" ng-mouseover="hover = 'title'" ng-mouseleave="hover = ''">
+                        <a href="" ng-click="order('title')">
+                          Title
+                          <span class="float-right">
+                            <i class="fa fa-caret-up" ng-show="showCaretUp('title')"></i>
+                            <i class="fa fa-caret-down" ng-show="showCaretDown('title')"></i>
+                          </span>
+                        </a>
+                      </th>
+                      <th class="col-xs-2" ng-class="{'selected': predicate === 'dateStarted'}" ng-mouseover="hover = 'dateStarted'" ng-mouseleave="hover = ''">
+                        <a href="" ng-click="order('dateStarted')">
+                          Date started
+                          <span class="float-right">
+                            <i class="fa fa-caret-up" ng-show="showCaretUp('dateStarted')"></i>
+                            <i class="fa fa-caret-down" ng-show="showCaretDown('dateStarted')"></i>
+                          </span>
+                        </a>
+                      </th>
+                      <th class="col-xs-2" ng-class="{'selected': predicate === 'dateFinished'}" ng-mouseover="hover = 'dateFinished'" ng-mouseleave="hover = ''">
+                        <a href="" ng-click="order('dateFinished')">
+                          Date finished
+                          <span class="float-right">
+                            <i class="fa fa-caret-up" ng-show="showCaretUp('dateFinished')"></i>
+                            <i class="fa fa-caret-down" ng-show="showCaretDown('dateFinished')"></i>
+                          </span>
+                        </a>
+                      </th>
+                      <th class="col-xs-2" ng-class="{'selected': predicate === 'daysToFinish'}" ng-mouseover="hover = 'daysToFinish'" ng-mouseleave="hover = ''">
+                        <a href="" ng-click="order('daysToFinish')">
+                          Days to finish
+                          <span class="float-right">
+                            <i class="fa fa-caret-up" ng-show="showCaretUp('daysToFinish')"></i>
+                            <i class="fa fa-caret-down" ng-show="showCaretDown('daysToFinish')"></i>
+                          </span>
+                        </a>
+                      </th>
+                    </tr>
+                  </thead>
 
-                  <tr ng-repeat="book in books | orderBy:'-dateFinished'">
-                    <td>{{ book.title }}</td>
-                    <td class="text-right">{{ book.dateStarted.iso | date : 'MMM dd, yyyy' }}</td>
-                    <td class="text-right">{{ book.dateFinished.iso | date : 'MMM dd, yyyy' }}</td>
-                    <td class="text-right">{{ book.daysToFinish }}</td>
-                  </tr>
+                  <tbody>
+                    <tr ng-repeat="book in books | orderBy : predicate : reverse">
+                      <td>{{ book.title }}</td>
+                      <td>{{ book.dateStarted.iso | date : 'MMM dd, yyyy' }}</td>
+                      <td>{{ book.dateFinished.iso | date : 'MMM dd, yyyy' }}</td>
+                      <td>{{ book.daysToFinish }}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
