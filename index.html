@@ -63,7 +63,7 @@
                     <th class="text-right">Days to finish</th>
                   </tr>
 
-                  <tr ng-repeat="book in books">
+                  <tr ng-repeat="book in books | orderBy:'-dateFinished'">
                     <td>{{ book.title }}</td>
                     <td class="text-right">{{ book.dateStarted.iso | date : 'MMM dd, yyyy' }}</td>
                     <td class="text-right">{{ book.dateFinished.iso | date : 'MMM dd, yyyy' }}</td>
