@@ -65,8 +65,13 @@ body {
   background-color: #DAECFB;
 }
 
+.table-dashboard>thead>tr>th {
+  padding: 0;
+}
+
 .table-dashboard>thead>tr>th>a {
   display: block;
+  padding: 8px;
   color: #333;
   text-decoration: none;
 }
