@@ -35,7 +35,10 @@ controller('TableCtrl', function($scope) {
     if(($scope.predicate === predicate && !$scope.reverse)) {
       var show = true;
     }
-    else if($scope.predicate !== predicate && $scope.hover === predicate) {
+    else if($scope.predicate !== predicate &&
+      $scope.hover === predicate &&
+      // Don't trigger hover capability on touch screens
+      !('ontouchstart' in window)) {
       var show = true;
     }
 
