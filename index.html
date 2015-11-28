@@ -69,39 +69,12 @@
                 <table class="table table-striped table-hover table-dashboard" ng-controller="TableCtrl">
                   <thead>
                     <tr>
-                      <th class="col-sm-6" ng-class="{'selected': predicate === 'title'}" ng-mouseover="hover = 'title'" ng-mouseleave="hover = ''">
-                        <a href="" ng-click="order('title')">
-                          Title
+                      <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}" ng-mouseover="hover = heading.predicate" ng-mouseleave="hover = ''">
+                        <a href="" ng-click="order(heading.predicate)">
+                          {{ heading.label }}
                           <span class="float-right">
-                            <i class="fa fa-caret-up" ng-show="showCaretUp('title')"></i>
-                            <i class="fa fa-caret-down" ng-show="showCaretDown('title')"></i>
-                          </span>
-                        </a>
-                      </th>
-                      <th class="col-sm-2" ng-class="{'selected': predicate === 'dateStarted'}" ng-mouseover="hover = 'dateStarted'" ng-mouseleave="hover = ''">
-                        <a href="" ng-click="order('dateStarted')">
-                          Date started
-                          <span class="float-right">
-                            <i class="fa fa-caret-up" ng-show="showCaretUp('dateStarted')"></i>
-                            <i class="fa fa-caret-down" ng-show="showCaretDown('dateStarted')"></i>
-                          </span>
-                        </a>
-                      </th>
-                      <th class="col-sm-2" ng-class="{'selected': predicate === 'dateFinished'}" ng-mouseover="hover = 'dateFinished'" ng-mouseleave="hover = ''">
-                        <a href="" ng-click="order('dateFinished')">
-                          Date finished
-                          <span class="float-right">
-                            <i class="fa fa-caret-up" ng-show="showCaretUp('dateFinished')"></i>
-                            <i class="fa fa-caret-down" ng-show="showCaretDown('dateFinished')"></i>
-                          </span>
-                        </a>
-                      </th>
-                      <th class="col-sm-2" ng-class="{'selected': predicate === 'daysToFinish'}" ng-mouseover="hover = 'daysToFinish'" ng-mouseleave="hover = ''">
-                        <a href="" ng-click="order('daysToFinish')">
-                          Days to finish
-                          <span class="float-right">
-                            <i class="fa fa-caret-up" ng-show="showCaretUp('daysToFinish')"></i>
-                            <i class="fa fa-caret-down" ng-show="showCaretDown('daysToFinish')"></i>
+                            <i class="fa fa-caret-up" ng-show="showCaretUp(heading.predicate)"></i>
+                            <i class="fa fa-caret-down" ng-show="showCaretDown(heading.predicate)"></i>
                           </span>
                         </a>
                       </th>

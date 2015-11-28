@@ -21,6 +21,28 @@ controller('DashboardCtrl', function($scope, Book) {
   });
 }).
 controller('TableCtrl', function($scope) {
+  $scope.headings = [
+    {
+      'predicate': 'title',
+      'label': 'Title',
+      'colWidth': 'col-sm-6'
+    },
+    {
+      'predicate': 'dateStarted',
+      'label': 'Date started',
+      'colWidth': 'col-sm-2'
+    },
+    {
+      'predicate': 'dateFinished',
+      'label': 'Date finished',
+      'colWidth': 'col-sm-2'
+    },
+    {
+      'predicate': 'daysToFinish',
+      'label': 'Days to finish',
+      'colWidth': 'col-sm-2'
+    }
+  ];
   $scope.predicate = 'dateFinished';
   $scope.reverse = true;
 
