@@ -6,19 +6,19 @@ controller('DashboardCtrl', function($scope, Book) {
   bookData.$promise.then(function() {
     var books = bookData.results;
     $scope.books = books;
-
-    var numberOfBooks = books.length;
-    $scope.numberOfBooks = numberOfBooks;
-
-    $scope.getAverageDaysToFinish = function() {
-      var sum = 0.0;
-      angular.forEach(books, function(book) {
-        sum += book.daysToFinish;
-      });
-
-      return sum / numberOfBooks;
-    };
   });
+}).
+controller('AverageDaysToFinishCtrl', function($scope) {
+  $scope.getAverageDaysToFinish = function(books) {
+    var sum = 0.0;
+    var numberOfBooks = 0;
+    angular.forEach(books, function(book) {
+      sum += book.daysToFinish;
+      numberOfBooks += 1;
+    });
+
+    return sum / numberOfBooks;
+  };
 }).
 controller('TableCtrl', function($scope) {
   $scope.headings = [

@@ -41,19 +41,19 @@
                 </div>
 
                 <div class="panel-body text-center">
-                  <p class="kpi-value">{{ numberOfBooks }}</p>
+                  <p class="kpi-value">{{ books.length }}</p>
                 </div>
               </div>
             </div>
 
             <div class="col-sm-6">
-              <div class="panel panel-info">
+              <div class="panel panel-info" ng-controller="AverageDaysToFinishCtrl">
                 <div class="panel-heading">
                   <h2 class="panel-title">Average days to finish</h2>
                 </div>
 
                 <div class="panel-body text-center">
-                  <p class="kpi-value">{{ getAverageDaysToFinish() | number : 1 }}</p>
+                  <p class="kpi-value">{{ getAverageDaysToFinish(books) | number : 1 }}</p>
                 </div>
               </div>
             </div>
