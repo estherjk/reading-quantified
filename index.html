@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="panel-body text-center">
-                  <p class="kpi-value">{{ books.length }}</p>
+                  <p class="kpi-value" ng-bind="books.length"></p>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="panel-body text-center">
-                  <p class="kpi-value">{{ getAverageDaysToFinish(books) | number : 1 }}</p>
+                  <p class="kpi-value" ng-bind="getAverageDaysToFinish(books) | number : 1"></p>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
                     <tr>
                       <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}" ng-mouseover="hover = heading.predicate" ng-mouseleave="hover = ''">
                         <a href="" ng-click="order(heading.predicate)">
-                          {{ heading.label }}
+                          <span ng-bind="heading.label"></span>
                           <span class="float-right">
                             <i class="fa fa-caret-up" ng-show="showCaretUp(heading.predicate)"></i>
                             <i class="fa fa-caret-down" ng-show="showCaretDown(heading.predicate)"></i>
@@ -83,10 +83,10 @@
 
                   <tbody>
                     <tr ng-repeat="book in books | orderBy : predicate : reverse">
-                      <td>{{ book.title }}</td>
-                      <td>{{ book.dateStarted.iso | date : 'MMM dd, yyyy' }}</td>
-                      <td>{{ book.dateFinished.iso | date : 'MMM dd, yyyy' }}</td>
-                      <td>{{ book.daysToFinish }}</td>
+                      <td ng-bind="book.title"></td>
+                      <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy'"></td>
+                      <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy'"></td>
+                      <td ng-bind="book.daysToFinish"></td>
                     </tr>
                   </tbody>
                 </table>
