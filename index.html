@@ -84,8 +84,8 @@
                   <tbody>
                     <tr ng-repeat="book in books | orderBy : predicate : reverse">
                       <td ng-bind="book.title"></td>
-                      <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy'"></td>
-                      <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy'"></td>
+                      <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
+                      <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                       <td ng-bind="book.daysToFinish"></td>
                     </tr>
                   </tbody>
