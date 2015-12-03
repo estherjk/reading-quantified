@@ -73,8 +73,9 @@
                         <a href="" ng-click="order(heading.predicate)">
                           <span ng-bind="heading.label"></span>
                           <span class="float-right">
-                            <i class="fa fa-caret-up" ng-show="showCaretUp(heading.predicate)"></i>
-                            <i class="fa fa-caret-down" ng-show="showCaretDown(heading.predicate)"></i>
+                            <i class="fa fa-sort" ng-hide="showSortAsc(heading.predicate) || showSortDesc(heading.predicate)"></i>
+                            <i class="fa fa-sort-asc" ng-show="showSortAsc(heading.predicate)"></i>
+                            <i class="fa fa-sort-desc" ng-show="showSortDesc(heading.predicate)"></i>
                           </span>
                         </a>
                       </th>

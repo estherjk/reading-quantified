@@ -46,7 +46,7 @@ controller('TableCtrl', function($scope) {
     $scope.predicate = predicate;
   };
 
-  $scope.showCaretUp = function(predicate) {
+  $scope.showSortAsc = function(predicate) {
     var show = false;
 
     if(($scope.predicate === predicate && !$scope.reverse)) {
@@ -62,7 +62,7 @@ controller('TableCtrl', function($scope) {
     return show;
   };
 
-  $scope.showCaretDown = function(predicate) {
+  $scope.showSortDesc = function(predicate) {
     var show = false;
 
     if(($scope.predicate === predicate && $scope.reverse)) {
