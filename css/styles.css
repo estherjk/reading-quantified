@@ -47,12 +47,6 @@ body {
   padding: 0;
 }
 
-/*** Global styles ***/
-
-.float-right {
-  float: right;
-}
-
 /*** Metrics styles ***/
 
 .kpi-value {
@@ -78,4 +72,14 @@ body {
 
 .table-dashboard>thead>tr>th>a:hover {
   text-decoration: none;
+}
+
+@media(max-width: 510px) {
+  .table-dashboard>thead>tr>th.col-sm-3 .pull-right {
+    float: none !important;
+  }
+}
+
+.sort-container {
+  margin-left: 8px;
 }
