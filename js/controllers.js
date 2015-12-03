@@ -28,19 +28,14 @@ controller('TableCtrl', function($scope) {
       'colWidth': 'col-sm-6'
     },
     {
-      'predicate': 'dateStarted',
-      'label': 'Date started',
-      'colWidth': 'col-sm-2'
-    },
-    {
       'predicate': 'dateFinished',
       'label': 'Date finished',
-      'colWidth': 'col-sm-2'
+      'colWidth': 'col-sm-3'
     },
     {
       'predicate': 'daysToFinish',
       'label': 'Days to finish',
-      'colWidth': 'col-sm-2'
+      'colWidth': 'col-sm-3'
     }
   ];
   $scope.predicate = 'dateFinished';
