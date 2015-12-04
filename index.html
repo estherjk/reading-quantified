@@ -35,25 +35,27 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <h2 class="panel-title">Number of books finished</h2>
-                </div>
+              <div class="panel panel-default panel-kpi">
+                <div class="panel-body">
+                  <h2 class="kpi-title">Number of books finished</h2>
 
-                <div class="panel-body text-center">
-                  <p class="kpi-value" ng-bind="books.length"></p>
+                  <div class="kpi-container">
+                    <span class="kpi-value" ng-bind="books.length"></span>
+                  </div>
+                  <d3-line data="numberOfBooksByMonth"></d3-line>
                 </div>
               </div>
             </div>
 
             <div class="col-sm-6">
-              <div class="panel panel-info" ng-controller="AverageDaysToFinishCtrl">
-                <div class="panel-heading">
-                  <h2 class="panel-title">Average days to finish</h2>
-                </div>
+              <div class="panel panel-default panel-kpi">
+                <div class="panel-body">
+                  <h2 class="kpi-title">Average days to finish</h2>
 
-                <div class="panel-body text-center">
-                  <p class="kpi-value" ng-bind="getAverageDaysToFinish(books) | number : 1"></p>
+                  <div class="kpi-container">
+                    <span class="kpi-value" ng-bind="averageDaysToFinish | number : 1"></span>
+                  </div>
+                  <d3-line data="averageDaysToFinishByMonth"></d3-line>
                 </div>
               </div>
             </div>
@@ -61,7 +63,7 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <div class="panel panel-info">
+              <div class="panel panel-default">
                 <div class="panel-heading">
                   <h2 class="panel-title">Books finished</h2>
                 </div>
@@ -117,12 +119,15 @@
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/d3-tip.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-touch.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
   </body>
 </html>

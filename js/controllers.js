@@ -1,24 +1,18 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Book) {
+controller('DashboardCtrl', function($scope, Book, BookMetrics) {
   var bookData = Book.get();
   bookData.$promise.then(function() {
     var books = bookData.results;
     $scope.books = books;
-  });
-}).
-controller('AverageDaysToFinishCtrl', function($scope) {
-  $scope.getAverageDaysToFinish = function(books) {
-    var sum = 0.0;
-    var numberOfBooks = 0;
-    angular.forEach(books, function(book) {
-      sum += book.daysToFinish;
-      numberOfBooks += 1;
-    });
 
-    return sum / numberOfBooks;
-  };
+    $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
+
+    var stats = BookMetrics.getStatsByMonth(books);
+    $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
+    $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
+  });
 }).
 controller('TableCtrl', function($scope) {
   $scope.headings = [
