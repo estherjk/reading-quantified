@@ -33,11 +33,13 @@
 
         <div class="container" ng-controller="DashboardCtrl">
 
+          <h2 class="date-title">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
+
           <div class="row">
             <div class="col-sm-6">
               <div class="panel panel-default panel-kpi">
                 <div class="panel-body">
-                  <h2 class="kpi-title">Number of books finished</h2>
+                  <h3 class="kpi-title">Number of books finished</h3>
 
                   <div class="kpi-container">
                     <span class="kpi-value" ng-bind="books.length"></span>
@@ -50,7 +52,7 @@
             <div class="col-sm-6">
               <div class="panel panel-default panel-kpi">
                 <div class="panel-body">
-                  <h2 class="kpi-title">Average days to finish</h2>
+                  <h3 class="kpi-title">Average days to finish</h3>
 
                   <div class="kpi-container">
                     <span class="kpi-value" ng-bind="averageDaysToFinish | number : 1"></span>
@@ -65,7 +67,7 @@
             <div class="col-sm-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2 class="panel-title">Books finished</h2>
+                  <h3 class="panel-title">Books finished</h3>
                 </div>
 
                 <div class="table-responsive">

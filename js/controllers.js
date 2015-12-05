@@ -1,7 +1,15 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Book, BookMetrics) {
+controller('DashboardCtrl', function($scope, Cron, Book, BookMetrics) {
+  var cronData = Cron.get({
+    'order': '-ranAt',
+    'limit': 1
+  });
+  cronData.$promise.then(function() {
+    $scope.ranAt = cronData.results[0].ranAt;
+  });
+
   var bookData = Book.get();
   bookData.$promise.then(function() {
     var books = bookData.results;

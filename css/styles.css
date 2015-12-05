@@ -47,7 +47,14 @@ body {
   padding: 0;
 }
 
-/*** Metrics styles ***/
+/*** Dashboard styles ***/
+
+.date-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #777;
+}
 
 .panel-kpi:hover {
   background-color: #f9f9f9;
