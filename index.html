@@ -65,9 +65,14 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Books finished</h3>
+              <div class="panel panel-default panel-books">
+                <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
+                <div class="panel-heading clearfix">
+                  <h3 class="panel-title pull-left">Books finished</h3>
+
+                  <div class="pull-right">
+                    <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                  </div>
                 </div>
 
                 <div class="table-responsive">
@@ -88,7 +93,7 @@
                     </thead>
 
                     <tbody>
-                      <tr ng-repeat="book in books | orderBy : predicate : reverse">
+                      <tr ng-repeat="book in books | filter : filterSearch | orderBy : predicate : reverse">
                         <td ng-bind="book.title"></td>
                         <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                         <td ng-bind="book.daysToFinish"></td>

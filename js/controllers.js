@@ -22,7 +22,7 @@ controller('DashboardCtrl', function($scope, Cron, Book, BookMetrics) {
     $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
   });
 }).
-controller('TableCtrl', function($scope) {
+controller('TableCtrl', function($scope, $filter) {
   $scope.headings = [
     {
       'predicate': 'title',
@@ -72,5 +72,14 @@ controller('TableCtrl', function($scope) {
     }
 
     return show;
+  };
+
+  $scope.filterSearch = function(book) {
+    var re = new RegExp($scope.searchText, 'i');
+    var dateFinishedString = $filter('date')(book.dateFinished.iso, 'MMMM d yyyy', 'UTC');
+
+    return  re.test(book.title) ||
+            re.test(dateFinishedString) ||
+            re.test(book.daysToFinish);
   };
 });

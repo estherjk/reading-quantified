@@ -79,6 +79,10 @@ body {
 
 /*** Table styles ***/
 
+.panel-books .panel-title {
+  padding-top: 8px;
+}
+
 .table-dashboard>thead>tr>th.selected {
   background-color: #DAECFB;
 }
