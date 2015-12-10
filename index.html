@@ -35,14 +35,14 @@
 
           <h2 class="date-title" ng-controller="DateCtrl">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
 
-          <div class="row">
+          <div class="row" ng-controller="KPIsCtrl">
             <div class="col-sm-6">
               <div class="panel panel-default panel-kpi">
                 <div class="panel-body">
                   <h3 class="kpi-title">Number of books finished</h3>
 
                   <div class="kpi-container">
-                    <span class="kpi-value" ng-bind="books.length"></span>
+                    <span class="kpi-value" ng-bind="numberOfBooks"></span>
                   </div>
                   <d3-line data="numberOfBooksByMonth"></d3-line>
                 </div>
@@ -93,7 +93,7 @@
                     </thead>
 
                     <tbody>
-                      <tr ng-repeat="book in books | filter : filterSearch | orderBy : predicate : reverse">
+                      <tr ng-repeat="book in bookData.results | filter : filterSearch | orderBy : predicate : reverse">
                         <td ng-bind="book.title"></td>
                         <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                         <td ng-bind="book.daysToFinish"></td>

@@ -1,27 +1,29 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Book, BookMetrics) {
-  var bookData = Book.get();
-  bookData.$promise.then(function() {
-    var books = bookData.results;
-    $scope.books = books;
-
-    $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
-
-    var stats = BookMetrics.getStatsByMonth(books);
-    $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
-    $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
-  });
+controller('DashboardCtrl', function($scope, Book) {
+  $scope.bookData = Book.get();
 }).
 controller('DateCtrl', function($scope, Cron) {
   var cronData = Cron.get({
     'order': '-ranAt',
     'limit': 1
   });
-  
+
   cronData.$promise.then(function() {
     $scope.ranAt = cronData.results[0].ranAt;
+  });
+}).
+controller('KPIsCtrl', function($scope, BookMetrics) {
+  $scope.bookData.$promise.then(function() {
+    var books = $scope.bookData.results;
+
+    $scope.numberOfBooks = $scope.bookData.results.length;
+    $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
+
+    var stats = BookMetrics.getStatsByMonth(books);
+    $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
+    $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
   });
 }).
 controller('TableCtrl', function($scope, $filter) {
