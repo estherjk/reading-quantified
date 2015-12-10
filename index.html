@@ -33,7 +33,7 @@
 
         <div class="container" ng-controller="DashboardCtrl">
 
-          <h2 class="date-title">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
+          <h2 class="date-title" ng-controller="DateCtrl">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
 
           <div class="row">
             <div class="col-sm-6">

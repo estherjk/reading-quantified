@@ -1,15 +1,7 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Cron, Book, BookMetrics) {
-  var cronData = Cron.get({
-    'order': '-ranAt',
-    'limit': 1
-  });
-  cronData.$promise.then(function() {
-    $scope.ranAt = cronData.results[0].ranAt;
-  });
-
+controller('DashboardCtrl', function($scope, Book, BookMetrics) {
   var bookData = Book.get();
   bookData.$promise.then(function() {
     var books = bookData.results;
@@ -20,6 +12,16 @@ controller('DashboardCtrl', function($scope, Cron, Book, BookMetrics) {
     var stats = BookMetrics.getStatsByMonth(books);
     $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
     $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
+  });
+}).
+controller('DateCtrl', function($scope, Cron) {
+  var cronData = Cron.get({
+    'order': '-ranAt',
+    'limit': 1
+  });
+  
+  cronData.$promise.then(function() {
+    $scope.ranAt = cronData.results[0].ranAt;
   });
 }).
 controller('TableCtrl', function($scope, $filter) {
