@@ -47,6 +47,27 @@ body {
   padding: 0;
 }
 
+/*** Site styles ***/
+
+.site-header {
+  padding: 20px 0;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    right top,
+    color-stop(0, #B31B1B),
+    color-stop(1, #D33939)
+  );
+  background-image: -o-linear-gradient(top, #B31B1B 0%, #D33939 100%);
+  background-image: -moz-linear-gradient(top, #B31B1B 0%, #D33939 100%);
+  background-image: -webkit-linear-gradient(top, #B31B1B 0%, #D33939 100%);
+  background-image: -ms-linear-gradient(top, #B31B1B 0%, #D33939 100%);
+  background-image: linear-gradient(to top, #B31B1B 0%, #D33939 100%);
+}
+
 /*** Dashboard styles ***/
 
 .date-title {
