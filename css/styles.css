@@ -12,7 +12,7 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -80px;
+  margin: 0 auto -100px;
 }
 
 #wrap-content {
@@ -22,7 +22,7 @@ body {
 /* Set the fixed height of the footer here */
 #push,
 #footer {
-  height: 80px;
+  height: 100px;
 }
 
 #footer {
@@ -45,6 +45,19 @@ body {
 #footer p {
   margin: 0;
   padding: 0;
+}
+
+#footer .footer-links {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+#footer .footer-links li {
+  display: inline-block;
+}
+
+#footer .footer-links li+li {
+  margin-left: 15px;
 }
 
 /*** Site styles ***/
