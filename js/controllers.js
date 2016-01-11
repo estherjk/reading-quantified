@@ -37,7 +37,7 @@ controller('TableCtrl', function($scope, $filter) {
       'colWidth': 'col-sm-6'
     },
     {
-      'predicate': 'dateFinished',
+      'predicate': 'dateFinished.iso',
       'label': 'Date finished',
       'colWidth': 'col-sm-3'
     },
@@ -47,7 +47,7 @@ controller('TableCtrl', function($scope, $filter) {
       'colWidth': 'col-sm-3'
     }
   ];
-  $scope.predicate = 'dateFinished';
+  $scope.predicate = 'dateFinished.iso';
   $scope.reverse = true;
 
   $scope.order = function(predicate) {
