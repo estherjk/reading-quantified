@@ -80,7 +80,7 @@
                   <table class="table table-striped table-hover table-dashboard">
                     <thead>
                       <tr>
-                        <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}" ng-mouseover="hover = heading.predicate" ng-mouseleave="hover = ''">
+                        <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}">
                           <a href="" ng-click="order(heading.predicate)">
                             <span ng-bind="heading.label"></span>
                             <span class="sort-container pull-right">

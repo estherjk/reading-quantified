@@ -53,29 +53,11 @@ controller('TableCtrl', function($scope, $filter) {
   };
 
   $scope.showSortAsc = function(predicate) {
-    var show = false;
-
-    if(($scope.predicate === predicate && !$scope.reverse)) {
-      var show = true;
-    }
-    else if($scope.predicate !== predicate &&
-      $scope.hover === predicate &&
-      // Don't trigger hover capability on touch screens
-      !('ontouchstart' in window)) {
-      var show = true;
-    }
-
-    return show;
+    return $scope.predicate === predicate && !$scope.reverse ? true : false;
   };
 
   $scope.showSortDesc = function(predicate) {
-    var show = false;
-
-    if(($scope.predicate === predicate && $scope.reverse)) {
-      var show = true;
-    }
-
-    return show;
+    return $scope.predicate === predicate && $scope.reverse ? true : false;
   };
 
   $scope.filterSearch = function(book) {
