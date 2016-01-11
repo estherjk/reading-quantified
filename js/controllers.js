@@ -2,7 +2,9 @@ angular.module('reading-quantified.controllers', [
 
 ]).
 controller('DashboardCtrl', function($scope, Book) {
-  $scope.bookData = Book.get();
+  $scope.bookData = Book.get({
+    'order': 'dateFinished'
+  });
 }).
 controller('DateCtrl', function($scope, Cron) {
   var cronData = Cron.get({
@@ -22,6 +24,7 @@ controller('KPIsCtrl', function($scope, BookMetrics) {
     $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
 
     var stats = BookMetrics.getStatsByMonth(books);
+
     $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
     $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
   });
