@@ -159,8 +159,8 @@ body {
   font-size: 11px;
 }
 
-.y.axis path {
-  display: none;
+.y.axis > .tick line {
+  opacity: 0.2;
 }
 
 .line {

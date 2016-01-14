@@ -43,9 +43,9 @@ directive('d3Line', function($window) {
           left: 0,
           right: 0
         };
-        var padding = 10;
+        var padding = 20;
         var width = d3.select(element[0]).node().offsetWidth - margin.left - margin.right;
-        var height = 150 - margin.top - margin.bottom;
+        var height = 200 - margin.top - margin.bottom;
         var circleSize = 3;
         var circleSizeLarge = 5;
 
@@ -66,7 +66,11 @@ directive('d3Line', function($window) {
 
         var yAxis = d3.svg.axis()
                       .scale(y)
-                      .orient('left');
+                      .orient('left')
+                      .ticks(5)
+                      .innerTickSize(-width + 2*padding)
+                      .outerTickSize(0)
+                      .tickPadding(10);
 
         var line = d3.svg.line()
                      .x(function(d) { return x(parseDate(d.date)); })
@@ -80,11 +84,12 @@ directive('d3Line', function($window) {
 
         svg.append('g')
             .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + height + ')')
+            .attr('transform', 'translate(0,' + (height - padding) + ')')
             .call(xAxis);
 
         svg.append('g')
             .attr('class', 'y axis')
+            .attr("transform", "translate(" + padding + ", 0)")
             .call(yAxis);
 
         svg.append('path')
