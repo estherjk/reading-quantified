@@ -1,12 +1,11 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Book) {
+controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
   $scope.bookData = Book.get({
     'order': 'dateFinished'
   });
-}).
-controller('DateCtrl', function($scope, Cron) {
+
   var cronData = Cron.get({
     'order': '-ranAt',
     'limit': 1
@@ -14,19 +13,18 @@ controller('DateCtrl', function($scope, Cron) {
 
   cronData.$promise.then(function() {
     $scope.ranAt = cronData.results[0].ranAt;
-  });
-}).
-controller('KPIsCtrl', function($scope, BookMetrics) {
-  $scope.bookData.$promise.then(function() {
-    var books = $scope.bookData.results;
 
-    $scope.numberOfBooks = $scope.bookData.results.length;
-    $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
+    $scope.bookData.$promise.then(function() {
+      var books = $scope.bookData.results;
 
-    var stats = BookMetrics.getStatsByMonth(books);
+      $scope.numberOfBooks = $scope.bookData.results.length;
+      $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
 
-    $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
-    $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
+      var stats = BookMetrics.getStatsByMonth(books, $scope.ranAt);
+
+      $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
+      $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
+    });
   });
 }).
 controller('TableCtrl', function($scope, $filter) {
