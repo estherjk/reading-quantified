@@ -77,7 +77,7 @@ directive('d3Line', function($window) {
                      .y(function(d) { return y(d.value); });
 
         x.domain(d3.extent(data, function(d) { return parseDate(d.date); }));
-        y.domain([0, d3.max(data, function(d) { return d.value })]);
+        y.domain([0, d3.max(data, function(d) { return parseFloat(d.value) })]);
 
         svg.attr('width', width + margin.left + margin.right);
         svg.attr('height', height + margin.top + margin.bottom);
