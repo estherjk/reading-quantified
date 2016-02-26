@@ -43,7 +43,7 @@ directive('d3Line', function($window) {
           left: 0,
           right: 0
         };
-        var padding = 20;
+        var padding = 22;
         var width = d3.select(element[0]).node().offsetWidth - margin.left - margin.right;
         var height = 200 - margin.top - margin.bottom;
         var circleSize = 3;
