@@ -2,7 +2,7 @@ angular.module('reading-quantified.services', [
   'ngResource'
 ]).
 factory('Book', function($resource, config) {
-  return $resource('https://api.parse.com/1/classes/Book', null, {
+  return $resource('https://drejkim-reading-quantified.herokuapp.com/parse/classes/Book', null, {
     'get': {
       method: 'GET',
       headers: {
@@ -14,7 +14,7 @@ factory('Book', function($resource, config) {
   });
 }).
 factory('Cron', function($resource, config) {
-  return $resource('https://api.parse.com/1/classes/Cron', null, {
+  return $resource('https://drejkim-reading-quantified.herokuapp.com/parse/classes/Cron', null, {
     'get': {
       method: 'GET',
       headers: {
