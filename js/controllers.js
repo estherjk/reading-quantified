@@ -2,6 +2,8 @@ angular.module('reading-quantified.controllers', [
 
 ]).
 controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
+  $scope.isLoaded = false;
+
   $scope.bookData = Book.get({
     'order': 'dateFinished'
   });
@@ -15,6 +17,8 @@ controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
     $scope.ranAt = cronData.results[0].ranAt;
 
     $scope.bookData.$promise.then(function() {
+      $scope.isLoaded = true;
+
       var books = $scope.bookData.results;
 
       $scope.numberOfBooks = $scope.bookData.results.length;

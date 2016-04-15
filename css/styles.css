@@ -81,6 +81,11 @@ body {
   background-image: linear-gradient(to top, #B31B1B 0%, #D33939 100%);
 }
 
+.invisble {
+  visibility: hidden;
+  opacity: 1;
+}
+
 /*** Dashboard styles ***/
 
 .date-title {
@@ -144,6 +149,12 @@ body {
 
 .sort-container {
   margin-left: 8px;
+}
+
+/*** Spinner styles ***/
+
+.spinner-icon {
+  color: #B31B1B;
 }
 
 /*** d3 line styles ***/
