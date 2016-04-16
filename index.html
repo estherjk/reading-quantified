@@ -22,25 +22,26 @@
       ga('send', 'pageview');
     </script>
   </head>
-  <body>
-    <div id="wrap">
-      <div id="wrap-content">
-        <div class="site-header">
+  <body ng-controller="DashboardCtrl">
+    <!-- Spinner -->
+    <div class="spinner-outer-container" ng-hide="isLoaded">
+      <div class="spinner-inner-container">
+        <i class="fa fa-spinner fa-pulse fa-5x fa-fw spinner-icon"></i>
+      </div>
+    </div>
+
+    <!-- Site content -->
+    <div ng-class="{'invisible': !isLoaded}">
+      <div id="wrap">
+        <div id="wrap-content">
+          <div class="site-header">
+            <div class="container">
+              <h1>Reading Quantified</h1>
+              <p class="lead">A dashboard for analyzing my reading habits</p>
+            </div>
+          </div>
+
           <div class="container">
-            <h1>Reading Quantified</h1>
-            <p class="lead">A dashboard for analyzing my reading habits</p>
-          </div>
-        </div>
-
-        <div class="container" ng-controller="DashboardCtrl">
-
-          <!-- Spinner -->
-          <div class="text-center" ng-hide="isLoaded">
-            <i class="fa fa-spinner fa-pulse fa-5x fa-fw spinner-icon"></i>
-          </div>
-
-          <!-- Dashboard elements -->
-          <div ng-class="{'invisible': !isLoaded}">
             <h2 class="date-title">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
 
             <div class="row">
@@ -112,25 +113,25 @@
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
+
+        <div id="push"></div>
       </div>
 
-      <div id="push"></div>
-    </div>
-
-    <div id="footer">
-      <div class="container">
-        <ul class="footer-links">
-          <li><a href="http://www.drejkim.com">drejkim.com</a></li>
-          <li><a href="http://drejkim.com/blog/2015/11/24/introducing-reading-quantified">Blog post</a></li>
-          <li><a href="https://github.com/drejkim/reading-quantified">GitHub</a></li>
-          <li><a href="https://trello.com/b/mgqBN7ZV">Trello</a></li>
-        </ul>
-        <p>
-          &#x000A9; 2016 Esther Jun Kim.
-        </p>
+      <div id="footer">
+        <div class="container">
+          <ul class="footer-links">
+            <li><a href="http://www.drejkim.com">drejkim.com</a></li>
+            <li><a href="http://drejkim.com/blog/2015/11/24/introducing-reading-quantified">Blog post</a></li>
+            <li><a href="https://github.com/drejkim/reading-quantified">GitHub</a></li>
+            <li><a href="https://trello.com/b/mgqBN7ZV">Trello</a></li>
+          </ul>
+          <p>
+            &#x000A9; 2016 Esther Jun Kim.
+          </p>
+        </div>
       </div>
     </div>
 

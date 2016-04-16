@@ -81,7 +81,7 @@ body {
   background-image: linear-gradient(to top, #B31B1B 0%, #D33939 100%);
 }
 
-.invisble {
+.invisible {
   visibility: hidden;
   opacity: 1;
 }
@@ -152,6 +152,21 @@ body {
 }
 
 /*** Spinner styles ***/
+
+.spinner-outer-container {
+  position: absolute;
+  display: table;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.spinner-inner-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
 
 .spinner-icon {
   color: #B31B1B;
