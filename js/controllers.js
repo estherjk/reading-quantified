@@ -39,14 +39,19 @@ controller('TableCtrl', function($scope, $filter) {
       'colWidth': 'col-sm-6'
     },
     {
+      'predicate': 'dateStarted.iso',
+      'label': 'Date started',
+      'colWidth': 'col-sm-2'
+    },
+    {
       'predicate': 'dateFinished.iso',
       'label': 'Date finished',
-      'colWidth': 'col-sm-3'
+      'colWidth': 'col-sm-2'
     },
     {
       'predicate': 'daysToFinish',
       'label': 'Days to finish',
-      'colWidth': 'col-sm-3'
+      'colWidth': 'col-sm-2'
     }
   ];
   $scope.predicate = 'dateFinished.iso';
