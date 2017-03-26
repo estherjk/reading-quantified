@@ -8,7 +8,7 @@
     <link rel="shortcut icon" sizes="16x16 32x32 64x64 128x128" href="/assets/favicon.ico">
     <link rel="apple-touch-icon-precomposed" type="image/png" href="/assets/favicon-152.png">
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
@@ -42,31 +42,16 @@
           </div>
 
           <div class="container">
-            <h2 class="date-title">As of <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></h2>
+            <p><small>Last updated: <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></small></p>
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <div class="panel panel-default panel-kpi">
-                  <div class="panel-body">
-                    <h3 class="kpi-title">Number of books finished</h3>
-
-                    <div class="kpi-container">
-                      <span class="kpi-value" ng-bind="numberOfBooks"></span>
-                    </div>
-                    <d3-line data="numberOfBooksByMonth"></d3-line>
+                  <div class="panel-heading">
+                    <h2 class="panel-title">Books finished by year</h3>
                   </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="panel panel-default panel-kpi">
                   <div class="panel-body">
-                    <h3 class="kpi-title">Average days to finish</h3>
-
-                    <div class="kpi-container">
-                      <span class="kpi-value" ng-bind="averageDaysToFinish | number : 1"></span>
-                    </div>
-                    <d3-line data="averageDaysToFinishByMonth"></d3-line>
+                    <d3-bar data="numberOfBooksByYear"></d3-bar>
                   </div>
                 </div>
               </div>
@@ -77,11 +62,15 @@
                 <div class="panel panel-default panel-books" ng-controller="TableCtrl">
                   <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
                   <div class="panel-heading clearfix">
-                    <h3 class="panel-title pull-left">Books finished</h3>
+                    <h2 class="panel-title pull-left">
+                      Number of books finished:
+                      <span ng-bind="numberOfBooks"></span>
+                    </h2>
 
-                    <div class="pull-right">
-                      <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
-                    </div>
+                    <h2 class="panel-title pull-right">
+                      Avg. days to finish:
+                      <span ng-bind="averageDaysToFinish | number : 1"></span>
+                    </h2>
                   </div>
 
                   <div class="table-responsive">
@@ -130,16 +119,15 @@
             <li><a href="https://trello.com/b/mgqBN7ZV">Trello</a></li>
           </ul>
           <p>
-            &#x000A9; 2016 Esther Jun Kim.
+            &#x000A9; 2017 Esther Jun Kim.
           </p>
         </div>
       </div>
     </div>
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="js/d3-tip.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-touch.min.js"></script>

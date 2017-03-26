@@ -1,16 +1,16 @@
-angular.module('reading-quantified.directives', [
+angular.module("reading-quantified.directives", [
 
 ]).
-directive('d3Line', function($window) {
+directive("d3Bar", function($window) {
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {
-      data: '='
+      data: "="
     },
     link: function(scope, element, attrs) {
       var svg = d3.select(element[0])
-                  .append('svg')
-                  .style('width', '100%');
+                  .append("svg")
+                  .style("width", "100%");
 
       // Browser onresize event
       window.onresize = function() {
@@ -25,102 +25,91 @@ directive('d3Line', function($window) {
       });
 
       // Watch for data changes and re-render
-      scope.$watch('data', function(newVals, oldVals) {
+      scope.$watch("data", function(newVals, oldVals) {
         return scope.render(newVals);
       }, true);
 
-      // d3 line chart code
+      // d3 bar chart code
       scope.render = function(data) {
         // Remove all previous items before render
-        svg.selectAll('*').remove();
+        svg.selectAll("*").remove();
 
-        // If we don't pass any data, return out of the element
+        // If we don"t pass any data, return out of the element
         if(!data) return;
 
         var margin = {
           top: 0,
-          bottom: 20,
-          left: 0,
-          right: 0
+          bottom: 0,
+          left: 20,
+          right: 40
         };
-        var padding = 22;
+        var padding = 20;
         var width = d3.select(element[0]).node().offsetWidth - margin.left - margin.right;
         var height = 200 - margin.top - margin.bottom;
-        var circleSize = 3;
-        var circleSizeLarge = 5;
 
-        var parseDate = d3.time.format('%b %Y').parse;
+        svg.attr("width", width + margin.left + margin.right)
+           .attr("height", height + margin.top + margin.bottom);
 
-        var x = d3.time.scale()
-                  .range([padding, width - padding]);
+        svg.append("g")
+           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        var y = d3.scale.linear()
-                  .range([height - padding, padding]);
+        var x = d3.scale.linear()
+                  .range([0, width])
+                  .domain([0, d3.max(data, function (d) {
+                    return d.value;
+                  })]);
+
+        var y = d3.scale.ordinal()
+                  .rangeRoundBands([height, 0], .1)
+                  .domain(data.map(function (d) {
+                    return d.label;
+                  }));
 
         var xAxis = d3.svg.axis()
-                      .scale(x)
-                      .orient('bottom')
-                      .ticks(d3.time.months)
-                      .tickSize(3)
-                      .tickFormat(d3.time.format('%b'));
+                  .scale(x)
+                  .orient("bottom");
 
         var yAxis = d3.svg.axis()
-                      .scale(y)
-                      .orient('left')
-                      .ticks(5)
-                      .innerTickSize(-width + 2*padding)
-                      .outerTickSize(0)
-                      .tickPadding(10);
+                  .scale(y)
+                  .orient("left")
+                  .ticks(5);
 
-        var line = d3.svg.line()
-                     .x(function(d) { return x(parseDate(d.date)); })
-                     .y(function(d) { return y(d.value); });
+        svg.append("g")
+           .attr("class", "x axis")
+           .attr("transform", "translate(0," + (height - padding) + ")")
+           .call(xAxis);
 
-        x.domain(d3.extent(data, function(d) { return parseDate(d.date); }));
-        y.domain([0, d3.max(data, function(d) { return parseFloat(d.value) })]);
+        svg.append("g")
+           .attr("class", "y axis")
+           .attr("transform", "translate(" + (margin.left + padding) + ",0)")
+           .call(yAxis);
 
-        svg.attr('width', width + margin.left + margin.right);
-        svg.attr('height', height + margin.top + margin.bottom);
+        var bars = svg.selectAll(".bar")
+                      .data(data)
+                      .enter()
+                      .append("g");
 
-        svg.append('g')
-            .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + (height - padding) + ')')
-            .call(xAxis);
-
-        svg.append('g')
-            .attr('class', 'y axis')
-            .attr("transform", "translate(" + padding + ", 0)")
-            .call(yAxis);
-
-        svg.append('path')
-            .datum(data)
-            .attr('class', 'line')
-            .attr('d', line);
-
-        // Tool tip
-        var tip = d3.tip()
-                    .attr('class', 'd3-tip').html(function(d) {
-                      return '<span>' + d.date + ': ' + d.value + '</span>';
-                    })
-                    .direction('n')
-                    .offset([-10, 0]);
-        svg.call(tip);
-
-        svg.selectAll('circle')
-            .data(data)
-            .enter()
-            .append('circle')
-            .attr('class', 'circle')
-            .attr('cx', function (d) { return x(parseDate(d.date)); })
-            .attr('cy', function(d) { return y(d.value); })
-            .attr('r', circleSize)
-            .on('mouseover', function(d) {
-              tip.show(d);
-              d3.select(this).attr('r', circleSizeLarge);
+        bars.append("rect")
+            .attr("class", "bar")
+            .attr("x", margin.left + padding)
+            .attr("y", function (d) {
+              return y(d.label);
             })
-            .on('mouseout', function(d) {
-              tip.hide(d);
-              d3.select(this).attr('r', circleSize);
+            .attr("height", y.rangeBand())
+            .attr("width", function (d) {
+              return x(d.value);
+            });
+
+        bars.append("text")
+            .attr("class", "label")
+            .attr("x", function (d) {
+              return x(d.value) + margin.left + padding + 5;
+            })
+            .attr("y", function (d) {
+              return y(d.label) + y.rangeBand() / 2 + 4;
+            })
+            .text(function (d) {
+              return d.value;
             });
       };
     }

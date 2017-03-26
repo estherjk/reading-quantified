@@ -23,11 +23,7 @@ controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
 
       $scope.numberOfBooks = $scope.bookData.results.length;
       $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
-
-      var stats = BookMetrics.getStatsByMonth(books, $scope.ranAt);
-
-      $scope.numberOfBooksByMonth = BookMetrics.getNumberOfBooksByMonth(stats);
-      $scope.averageDaysToFinishByMonth = BookMetrics.getAverageDaysToFinishByMonth(stats);
+      $scope.numberOfBooksByYear = BookMetrics.getNumberOfBooksFinishedByYear(books);
     });
   });
 }).

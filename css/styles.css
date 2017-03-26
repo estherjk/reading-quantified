@@ -86,36 +86,6 @@ body {
   opacity: 1;
 }
 
-/*** Dashboard styles ***/
-
-.date-title {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #777;
-}
-
-.panel-kpi:hover {
-  background-color: #f9f9f9;
-  cursor: pointer;
-}
-
-.kpi-title {
-  margin-top: 0;
-  margin-bottom: 4px;
-  font-size: 16px;
-  color: inherit;
-}
-
-.kpi-container {
-  margin-bottom: 20px;
-}
-
-.kpi-value {
-  font-size: 24px;
-  line-height: 1.4em;
-}
-
 /*** Table styles ***/
 
 .panel-books .panel-title {
@@ -123,7 +93,7 @@ body {
 }
 
 .table-dashboard>thead>tr>th.selected {
-  background-color: #DAECFB;
+  background-color: #BFE1F7;
 }
 
 .table-dashboard>thead>tr>th {
@@ -172,64 +142,22 @@ body {
   color: #B31B1B;
 }
 
-/*** d3 line styles ***/
+/*** d3 bar chart styles ***/
+
+.bar {
+  fill: #1485CC;
+}
+
+.bar:hover {
+  fill: #066BAD;
+}
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: grey;
-  shape-rendering: crispEdges;
+    fill: none;
+    display: none;
 }
 
-.axis text {
-  font-size: 11px;
-}
-
-.y.axis > .tick line {
-  opacity: 0.2;
-}
-
-.line {
-  fill: none;
-  stroke: #31708f;
-  stroke-width: 2px;
-}
-
-.circle {
-  fill: #31708f;
-}
-
-/*** d3 tooltip styles ***/
-
-.d3-tip {
-  line-height: 1;
-  font-weight: bold;
-  padding: 8px;
-  background-color: #333;
-  opacity: 0.8;
-  color: #fff;
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: #333;
-  opacity: 0.8;
-  position: absolute;
-  pointer-events: none;
-}
-
-/* Northward tooltips */
-.d3-tip.n:after {
-  content: "\25BC";
-  margin: -3px 0 0 0;
-  top: 100%;
-  left: 0;
-  text-align: center;
+.x.axis text {
+  display: none
 }
