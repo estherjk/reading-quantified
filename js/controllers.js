@@ -1,13 +1,14 @@
 angular.module('reading-quantified.controllers', [
 
 ]).
-controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
+controller('DashboardCtrl', function($scope, $filter, Book, Cron, BookMetrics) {
   $scope.isLoaded = false;
 
   $scope.bookData = Book.get({
     'order': 'dateFinished'
   });
 
+  var books;
   var cronData = Cron.get({
     'order': '-ranAt',
     'limit': 1
@@ -19,15 +20,20 @@ controller('DashboardCtrl', function($scope, Book, Cron, BookMetrics) {
     $scope.bookData.$promise.then(function() {
       $scope.isLoaded = true;
 
-      var books = $scope.bookData.results;
-
-      $scope.numberOfBooks = $scope.bookData.results.length;
-      $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(books);
-      $scope.numberOfBooksByYear = BookMetrics.getNumberOfBooksFinishedByYear(books);
+      books = $scope.bookData.results;
+      $scope.numberOfBooksFinishedPerYear = BookMetrics.getNumberOfBooksFinishedPerYear(books);
+      
+      computeStatsByYear($scope.year);
     });
   });
-}).
-controller('TableCtrl', function($scope, $filter) {
+
+  $scope.year = "2017";
+  $scope.$watch("year", function(newValue, oldValue) {
+    if(newValue != oldValue) {
+      computeStatsByYear(newValue);
+    }
+  });
+
   $scope.headings = [
     {
       'predicate': 'title',
@@ -66,12 +72,10 @@ controller('TableCtrl', function($scope, $filter) {
     return $scope.predicate === predicate && $scope.reverse ? true : false;
   };
 
-  $scope.filterSearch = function(book) {
-    var re = new RegExp($scope.searchText, 'i');
-    var dateFinishedString = $filter('date')(book.dateFinished.iso, 'MMMM d yyyy', 'UTC');
+  function computeStatsByYear(year) {
+    var booksByYear = $filter('filterBooksByYear')(books, year);
 
-    return  re.test(book.title) ||
-            re.test(dateFinishedString) ||
-            re.test(book.daysToFinish);
-  };
+    $scope.numberOfBooks = booksByYear.length;
+    $scope.averageDaysToFinish = BookMetrics.getAverageDaysToFinish(booksByYear);
+  }
 });

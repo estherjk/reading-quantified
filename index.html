@@ -51,7 +51,7 @@
                     <h2 class="panel-title">Books finished by year</h3>
                   </div>
                   <div class="panel-body">
-                    <d3-bar data="numberOfBooksByYear"></d3-bar>
+                    <d3-bar data="numberOfBooksFinishedPerYear" active-label="year"></d3-bar>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="panel panel-default panel-books" ng-controller="TableCtrl">
+                <div class="panel panel-default panel-books">
                   <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
                   <div class="panel-heading clearfix">
                     <h2 class="panel-title pull-left">
@@ -91,7 +91,7 @@
                       </thead>
 
                       <tbody>
-                        <tr ng-repeat="book in bookData.results | filter : filterSearch | orderBy : predicate : reverse">
+                        <tr ng-repeat="book in bookData.results | filterBooksByYear : year | orderBy : predicate : reverse">
                           <td ng-bind="book.title"></td>
                           <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                           <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
@@ -135,6 +135,7 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
   </body>
 </html>

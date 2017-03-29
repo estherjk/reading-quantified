@@ -150,6 +150,11 @@ body {
 
 .bar:hover {
   fill: #066BAD;
+  cursor: pointer;
+}
+
+.bar.active{
+  fill: #066BAD;
 }
 
 .axis path,

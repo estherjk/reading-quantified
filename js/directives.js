@@ -5,7 +5,8 @@ directive("d3Bar", function($window) {
   return {
     restrict: "E",
     scope: {
-      data: "="
+      data: "=",
+      activeLabel: "="
     },
     link: function(scope, element, attrs) {
       var svg = d3.select(element[0])
@@ -98,6 +99,24 @@ directive("d3Bar", function($window) {
             .attr("height", y.rangeBand())
             .attr("width", function (d) {
               return x(d.value);
+            })
+            // Add active class to appropriate bar on initialization
+            .each(function(d) {
+              if(d.label == scope.activeLabel) {
+                d3.select(this).attr("class", "bar active");
+              }
+              else {
+                d3.selectAll("rect").attr("class", "bar");
+              }
+            })
+            // Add active class to selected bar on click
+            .on("click", function(d) {
+              d3.selectAll("rect").attr("class", "bar");
+              d3.select(this).attr("class", "bar active");
+
+              scope.$apply(function() {
+                scope.activeLabel = d.label;
+              });
             });
 
         bars.append("text")

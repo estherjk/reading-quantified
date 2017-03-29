@@ -39,7 +39,7 @@ factory('BookMetrics', function($filter) {
     return sum / numberOfBooks;
   };
 
-  factory.getNumberOfBooksFinishedByYear = function(books) {
+  factory.getNumberOfBooksFinishedPerYear = function(books) {
     var stats = {};
     angular.forEach(books, function(book) {
       var date = $filter('date')(book.dateFinished.iso, 'yyyy', 'UTC');
