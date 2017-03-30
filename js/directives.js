@@ -16,7 +16,7 @@ directive("d3Bar", function($window) {
       // Browser onresize event
       window.onresize = function() {
         scope.$apply();
-      }
+      };
 
       // Watch for resize event
       scope.$watch(function() {
