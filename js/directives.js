@@ -91,7 +91,14 @@ directive("d3Bar", function($window) {
                     .append("g");
 
         bars.append("rect")
-            .attr("class", "bar")
+            .attr("class", function(d) {
+              if(d.label == scope.activeLabel) {
+                return "bar active";
+              }
+              else {
+                return "bar";
+              }
+            })
             .attr("x", 0)
             .attr("y", function (d) {
               return y(d.label);
@@ -99,15 +106,6 @@ directive("d3Bar", function($window) {
             .attr("height", y.rangeBand())
             .attr("width", function (d) {
               return x(d.value);
-            })
-            // Add active class to appropriate bar on initialization
-            .each(function(d) {
-              if(d.label == scope.activeLabel) {
-                d3.select(this).attr("class", "bar active");
-              }
-              else {
-                d3.selectAll("rect").attr("class", "bar");
-              }
             })
             // Add active class to selected bar on click
             .on("click", function(d) {
