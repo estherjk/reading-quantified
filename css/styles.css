@@ -93,7 +93,7 @@ body {
 }
 
 .table-dashboard>thead>tr>th.selected {
-  background-color: #BFE1F7;
+  background-color: #ADD3EB;
 }
 
 .table-dashboard>thead>tr>th {
@@ -145,16 +145,16 @@ body {
 /*** d3 bar chart styles ***/
 
 .bar {
-  fill: #1485CC;
+  fill: #ADD3EB;
 }
 
 .bar:hover {
-  fill: #066BAD;
+  fill: #075180;
   cursor: pointer;
 }
 
-.bar.active{
-  fill: #066BAD;
+.bar.active {
+  fill: #075180;
 }
 
 .axis path,
