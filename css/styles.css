@@ -149,7 +149,7 @@ body {
 }
 
 .bar:hover {
-  fill: #075180;
+  fill: #ccc;
   cursor: pointer;
 }
 
