@@ -1,62 +1,51 @@
 /*** Sticky footer styles ***/
 
-html,
-body {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
-}
-
-/* Wrapper for page content to push down footer */
-#wrap {
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by it's height */
-  margin: 0 auto -100px;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
 }
 
-#wrap-content {
-  padding-bottom: 40px;
-}
-
-/* Set the fixed height of the footer here */
-#push,
-#footer {
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
   height: 100px;
-}
-
-#footer {
+  border-top: 1px solid #e7e7e7;
+  background-color: #f8f8f8;
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
-  border-top: 1px solid #e7e7e7;
-  background-color: #f8f8f8;
 }
 
-#footer a {
+.footer a {
   color: #777;
 }
 
-#footer a:hover,
-#footer a:focus {
+.footer a:hover,
+.footer a:focus {
   color: #333;
 }
 
-#footer p {
+.footer p {
   margin: 0;
   padding: 0;
 }
 
-#footer .footer-links {
+.footer .footer-links {
   padding-left: 0;
   margin-bottom: 20px;
 }
 
-#footer .footer-links li {
+.footer .footer-links li {
   display: inline-block;
 }
 
-#footer .footer-links li+li {
+.footer .footer-links li+li {
   margin-left: 15px;
 }
 
