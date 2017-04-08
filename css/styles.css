@@ -51,6 +51,10 @@ body {
 
 /*** Site styles ***/
 
+.wrap {
+  padding-bottom: 40px;
+}
+
 .site-header {
   padding: 20px 0;
   margin-bottom: 20px;
