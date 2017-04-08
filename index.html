@@ -24,10 +24,8 @@
   </head>
   <body ng-controller="DashboardCtrl">
     <!-- Spinner -->
-    <div class="spinner-outer-container" ng-hide="isLoaded">
-      <div class="spinner-inner-container">
-        <i class="fa fa-spinner fa-pulse fa-5x fa-fw spinner-icon"></i>
-      </div>
+    <div class="spinner-container" ng-hide="isLoaded">
+      <i class="fa fa-spinner fa-pulse fa-5x fa-fw spinner-icon"></i>
     </div>
 
     <!-- Site content -->
@@ -41,7 +39,7 @@
       </div>
 
       <div class="container">
-        
+
         <p><small>Last updated: <span ng-bind="ranAt.iso | date : 'MMM d, yyyy' : 'UTC'"></span></small></p>
 
         <div class="row">
