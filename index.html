@@ -57,7 +57,7 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-9">
               <div class="panel panel-default">
                 <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
                 <div class="panel-heading clearfix">
@@ -91,13 +91,31 @@
 
                     <tbody>
                       <tr ng-repeat="book in bookData.results | filterBooksByYear : year | orderBy : predicate : reverse">
-                        <td ng-bind="book.title"></td>
+                        <td>
+                          <span ng-repeat="bookLabel in book.labels" class="book-label-cell book-label-{{bookLabel.color}}"> </span>
+                          <div ng-bind="book.title"></div>
+                        </td>
                         <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                         <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
                         <td ng-bind="book.daysToFinish"></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2 class="panel-title">Labels</h3>
+                </div>
+                <div class="panel-body">
+                  <ul class="book-list-labels">
+                    <li ng-repeat="bookLabel in bookLabels">
+                      <span ng-bind="bookLabel.name" class="label book-label book-label-{{bookLabel.color}}"></span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

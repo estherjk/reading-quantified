@@ -106,8 +106,75 @@ body {
   }
 }
 
+.table-dashboard>tbody>tr>td {
+  vertical-align: bottom;
+}
+
 .sort-container {
   margin-left: 8px;
+}
+
+/*** Label styles ***/
+
+.book-list-labels {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.book-list-labels>li {
+  margin: 0 3px 3px 0;
+}
+
+.book-label {
+  display: block;
+  padding: 8px;
+  font-size: 100%;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(0,0,0,.2), 0 0 2px #000;
+}
+
+.book-label-cell {
+  margin: 0 3px 3px 0;
+  height: 4px;
+  width: 42px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.book-label-green {
+  background-color: #61BD4F;
+}
+
+.book-label-yellow {
+  background-color: #F2D600;
+}
+
+.book-label-orange {
+  background-color: #FFAB4A;
+}
+
+.book-label-red {
+  background-color: #EB5A46;
+}
+
+.book-label-purple {
+  background-color: #C377E0;
+}
+
+.book-label-blue {
+  background-color: #0079BF;
+}
+
+.book-label-pink {
+  background-color: #FF80CE;
+}
+
+.book-label-black {
+  background-color: #4d4d4d;
 }
 
 /*** Spinner styles ***/

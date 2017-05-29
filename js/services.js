@@ -25,6 +25,17 @@ factory('Cron', function($resource, config) {
     }
   });
 }).
+factory('Labels', function($resource, config) {
+  return $resource('https://api.trello.com/1/boards/564d07a87721d8698ff010d3/labels', null, {
+    'get': {
+      method: 'GET',
+      isArray: true,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  });
+}).
 factory('BookMetrics', function($filter) {
   var factory = {};
 
