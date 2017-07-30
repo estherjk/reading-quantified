@@ -30,7 +30,8 @@
     </div>
 
     <!-- Site content -->
-    <div ng-class="{'invisible': !isLoaded}">
+    <!-- Use ng-if instead of ng-show; see https://github.com/krispo/angular-nvd3/issues/259 -->
+    <div ng-if="isLoaded">
 
       <div class="wrap">
         <div class="page-header-primary text-center">
@@ -56,7 +57,8 @@
                   <h2 class="panel-title">Books finished by year</h3>
                 </div>
                 <div class="panel-body">
-                  <d3-bar data="numberOfBooksFinishedPerYear" active-label="year"></d3-bar>
+                  <!-- ng-if creates a new scope... we want the parent's scope year property -->
+                  <d3-bar data="numberOfBooksFinishedPerYear" active-label="$parent.year"></d3-bar>
                 </div>
               </div>
             </div>

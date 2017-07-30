@@ -2,11 +2,6 @@
   padding-bottom: 40px;
 }
 
-.invisible {
-  visibility: hidden;
-  opacity: 1;
-}
-
 /*** Table styles ***/
 
 .table-dashboard>thead>tr>th.selected {
