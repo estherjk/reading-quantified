@@ -10,6 +10,7 @@
 
 .table-dashboard>thead>tr>th {
   padding: 0;
+  white-space: nowrap;
 }
 
 .table-dashboard>thead>tr>th>a {
