@@ -85,7 +85,7 @@
                         <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}">
                           <a href="" ng-click="order(heading.predicate)">
                             <span ng-bind="heading.label"></span>
-                            <span class="sort-container pull-right">
+                            <span class="sort-container">
                               <i class="fa fa-sort" ng-hide="showSortAsc(heading.predicate) || showSortDesc(heading.predicate)"></i>
                               <i class="fa fa-sort-asc" ng-show="showSortAsc(heading.predicate)"></i>
                               <i class="fa fa-sort-desc" ng-show="showSortDesc(heading.predicate)"></i>
