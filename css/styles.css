@@ -1,11 +1,28 @@
-.wrap {
+/*** Sticky footer styles ***/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+
+  /* Additional padding to give some breathing room at the bottom */
   padding-bottom: 40px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
 }
 
 /*** Table styles ***/
 
 .table-dashboard>thead>tr>th.selected {
-  background-color: #ADD3EB;
+  background-color: #ced4da;
 }
 
 .table-dashboard>thead>tr>th {
@@ -16,7 +33,7 @@
 .table-dashboard>thead>tr>th>a {
   display: block;
   padding: 8px;
-  color: #333;
+  color: #343a40;
   text-decoration: none;
 }
 
@@ -54,6 +71,7 @@
   padding: 8px;
   font-size: 9pt;
   font-weight: 600;
+  color: #fff;
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -129,16 +147,16 @@
 /*** d3 bar chart styles ***/
 
 .bar {
-  fill: #ADD3EB;
+  fill: #ced4da;
 }
 
 .bar:hover {
-  fill: #ccc;
+  fill: #adb5bd;
   cursor: pointer;
 }
 
 .bar.active {
-  fill: #075180;
+  fill: #20c997;
 }
 
 .axis path,
