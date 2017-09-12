@@ -50,7 +50,7 @@
         <p><small>Last updated: <span ng-bind="ranAt.iso | date : 'MMM d, yyyy, HH:mm' : 'UTC'"></span> UTC</small></p>
 
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col">
 
             <!-- Bar chart -->
             <div class="card mb-3">
@@ -63,8 +63,10 @@
               </div>
             </div>
           </div>
-
-          <div class="col-sm-9">
+        </div>
+        
+        <div class="row">
+          <div class="col-md-9">
             <!-- Table -->
             <div class="card mb-3">
               <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
@@ -113,7 +115,7 @@
           </div>
 
           <!-- Labels -->
-          <div class="col-sm-3">
+          <div class="col-md-3">
             <div class="card mb-3">
               <div class="card-header bg-white">
                 Labels
