@@ -54,7 +54,7 @@ controller('DashboardCtrl', function($scope, $filter, Book, Cron, BookMetrics, L
     },
     {
       'predicate': 'daysToFinish',
-      'label': 'Days to finish',
+      'label': '# days',
       'colWidth': 'col-sm-2'
     }
   ];
