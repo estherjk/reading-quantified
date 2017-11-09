@@ -49,6 +49,13 @@
 
         <p><small>Last updated: <span ng-bind="ranAt.iso | date : 'MMM d, yyyy, HH:mm' : 'UTC'"></span> UTC</small></p>
 
+        <!-- Currently reading -->
+        <p class="lead text-primary">
+          Currently reading: 
+          <i><span ng-bind="readingList[0].name"></span></i>
+          (since <span ng-bind="readingList[0].dateLastActivity | date : 'MMM d, yyyy' : 'UTC'"></span>)
+        </p>
+
         <div class="row">
           <div class="col">
 

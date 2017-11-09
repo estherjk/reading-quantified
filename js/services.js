@@ -36,6 +36,17 @@ factory('Labels', function($resource, config) {
     }
   });
 }).
+factory('ReadingList', function($resource, config) {
+  return $resource('https://api.trello.com/1/lists/564d07a87721d8698ff010d6/cards', null, {
+    'get': {
+      method: 'GET',
+      isArray: true,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  });
+}).
 factory('BookMetrics', function($filter) {
   var factory = {};
 
