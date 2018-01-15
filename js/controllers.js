@@ -30,7 +30,8 @@ controller('DashboardCtrl', function($scope, $filter, Book, Cron, BookMetrics, L
     });
   });
 
-  $scope.year = "2017";
+  // TODO: Update year automatically instead of manually
+  $scope.year = "2018";
   $scope.$watch("year", function(newValue, oldValue) {
     if(newValue != oldValue) {
       computeStatsByYear(newValue);
