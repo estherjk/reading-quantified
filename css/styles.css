@@ -41,12 +41,6 @@ body {
   text-decoration: none;
 }
 
-@media(max-width: 510px) {
-  .table-dashboard>thead>tr>th.col-sm-3 .pull-right {
-    float: none !important;
-  }
-}
-
 .table-dashboard>tbody>tr>td {
   vertical-align: bottom;
 }
@@ -81,8 +75,14 @@ body {
 
 .book-label-cell {
   margin: 0 3px 3px 0;
-  height: 4px;
-  width: 42px;
+  padding: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   border-radius: 3px;
   display: inline-block;
 }
@@ -156,7 +156,7 @@ body {
 }
 
 .bar.active {
-  fill: #20c997;
+  fill: #007bff;
 }
 
 .axis path,

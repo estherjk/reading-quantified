@@ -42,22 +42,22 @@ controller('DashboardCtrl', function($scope, $filter, Book, Cron, BookMetrics, L
     {
       'predicate': 'title',
       'label': 'Title',
-      'colWidth': 'col-sm-6'
+      'style': 'min-width: 300px;'
     },
     {
       'predicate': 'dateStarted.iso',
       'label': 'Date started',
-      'colWidth': 'col-sm-2'
+      'style': 'min-width: 150px; width: 150px;'
     },
     {
       'predicate': 'dateFinished.iso',
       'label': 'Date finished',
-      'colWidth': 'col-sm-2'
+      'style': 'min-width: 150px; width: 150px;'
     },
     {
       'predicate': 'daysToFinish',
       'label': '# days',
-      'colWidth': 'col-sm-2'
+      'style': 'min-width: 90px; width: 90px;'
     }
   ];
   $scope.predicate = 'dateFinished.iso';

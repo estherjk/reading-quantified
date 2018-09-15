@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="reading-quantified">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reading Quantified | Esther Jun Kim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" sizes="16x16 32x32 64x64 128x128" href="/assets/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" type="image/png" href="/assets/favicon-152.png">
+    <!-- Favicons -->
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64 128x128" href="https://media.githubusercontent.com/media/drejkim/drejkim.github.io/master/assets/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="https://media.githubusercontent.com/media/drejkim/drejkim.github.io/master/assets/favicon-152.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
     <script>
@@ -21,6 +22,8 @@
       ga('create', 'UA-54477708-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+    <title>Reading Quantified | Esther Makes Tech</title>
   </head>
   <body ng-controller="DashboardCtrl">
     <!-- Spinner -->
@@ -55,7 +58,7 @@
 
         <!-- Currently reading -->
         <div ng-show="readingList.length > 0">
-          <p class="lead text-primary">
+          <p class="lead">
             Currently reading: 
             <i><span ng-bind="readingList[0].name"></span></i>
             (since <span ng-bind="readingList[0].dateLastActivity | date : 'MMM d, yyyy' : 'UTC'"></span>)
@@ -67,7 +70,7 @@
 
             <!-- Bar chart -->
             <div class="card mb-3">
-              <div class="card-header bg-white">
+              <div class="card-header">
                 Books finished by year
               </div>
               <div class="card-body">
@@ -79,66 +82,52 @@
         </div>
         
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-12">
             <!-- Table -->
             <div class="card mb-3">
               <!-- From Bootstrap docs: Easily clear floats by adding .clearfix to the parent element -->
-              <div class="card-header bg-white clearfix">
-                <div class="panel-title pull-left">
+              <div class="card-header clearfix">
+                <div class="float-md-left">
                   Books finished:
                   <span ng-bind="numberOfBooks"></span>
                 </div>
 
-                <div class="panel-title pull-right">
+                <div class="float-md-right">
                   Avg. days to finish:
                   <span ng-bind="averageDaysToFinish | number : 1"></span>
                 </div>
               </div>
               <div class="card-body m-0 p-0">
-                <table class="table table-responsive table-hover table-dashboard m-0 p-0">
-                  <thead>
-                    <tr>
-                      <th ng-repeat="heading in headings" class="{{ heading.colWidth }}" ng-class="{'selected': predicate === heading.predicate}">
-                        <a href="" ng-click="order(heading.predicate)">
-                          <span ng-bind="heading.label"></span>
-                          <span class="sort-container">
-                            <i class="fa fa-sort" ng-hide="showSortAsc(heading.predicate) || showSortDesc(heading.predicate)"></i>
-                            <i class="fa fa-sort-asc" ng-show="showSortAsc(heading.predicate)"></i>
-                            <i class="fa fa-sort-desc" ng-show="showSortDesc(heading.predicate)"></i>
-                          </span>
-                        </a>
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr ng-repeat="book in bookData.results | filterBooksByYear : year | orderBy : predicate : reverse">
-                      <td>
-                        <span ng-repeat="bookLabel in book.labels" class="book-label-cell book-label-{{bookLabel.color}}"> </span>
-                        <div ng-bind="book.title"></div>
-                      </td>
-                      <td ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
-                      <td ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
-                      <td ng-bind="book.daysToFinish"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- Labels -->
-          <div class="col-md-3">
-            <div class="card mb-3">
-              <div class="card-header bg-white">
-                Labels
-              </div>
-              <div class="card-body">
-                <ul class="book-list-labels">
-                  <li ng-repeat="bookLabel in bookLabels">
-                    <span ng-bind="bookLabel.name" class="book-label book-label-{{bookLabel.color}}"></span>
-                  </li>
-                </ul>
+                <div class="table-responsive">
+                  <table class="table table-hover table-dashboard m-0 p-0">
+                    <thead>
+                      <tr>
+                        <th ng-repeat="heading in headings" style="{{ heading.style }}" ng-class="{'selected': predicate === heading.predicate}">
+                          <a href="" ng-click="order(heading.predicate)">
+                            <span ng-bind="heading.label"></span>
+                            <span class="sort-container">
+                              <i class="fa fa-sort" ng-hide="showSortAsc(heading.predicate) || showSortDesc(heading.predicate)"></i>
+                              <i class="fa fa-sort-up" ng-show="showSortAsc(heading.predicate)"></i>
+                              <i class="fa fa-sort-down" ng-show="showSortDesc(heading.predicate)"></i>
+                            </span>
+                          </a>
+                        </th>
+                      </tr>
+                    </thead>
+  
+                    <tbody>
+                      <tr ng-repeat="book in bookData.results | filterBooksByYear : year | orderBy : predicate : reverse">
+                        <td>
+                          <span ng-repeat="bookLabel in book.labels" class="book-label-cell book-label-{{ bookLabel.color }}">{{ bookLabel.name }}</span>
+                          <div ng-bind="book.title"></div>
+                        </td>
+                        <td class="text-monospace" ng-bind="book.dateStarted.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
+                        <td class="text-monospace" ng-bind="book.dateFinished.iso | date : 'MMM dd, yyyy' : 'UTC'"></td>
+                        <td class="text-monospace" ng-bind="book.daysToFinish"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -148,7 +137,7 @@
       <!-- Sticky footer -->
       <footer class="footer bg-light">
         <div class="container text-center">
-          <span class="text-muted">&#x000A9; 2018 <a class="text-dark" href="http://drejkim.com">Esther Jun Kim</a>.</span>
+          <span class="text-muted small">&#x000A9; 2018 <a class="text-dark" href="http://esthermakes.tech">Esther Jun Kim</a>.</span>
         </div>
       </footer>
     </div>
