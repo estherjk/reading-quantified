@@ -26,9 +26,9 @@
     <title>Reading Quantified | Esther Makes Tech</title>
   </head>
   <body>
+
     <!-- Site content -->
     <div>
-
       <!-- Jumbotron -->
       <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
@@ -47,12 +47,19 @@
       </div>
 
       <div class="container">
+        <!-- Loading spinner -->
+        <div id="spinner" class="text-center">
+          <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-dark"></i>
+        </div>
+
+        <!-- Metabase dashboard -->
         <iframe
           src="http://reading-quantified-metabase.herokuapp.com/public/dashboard/9ff9ef56-643a-4e44-86e9-1735575e3981"
           frameborder="0"
           width="100%"
           height="1100"
-          allowtransparency>
+          allowtransparency
+          onload="document.getElementById('spinner').style.display='none';">
         </iframe>
       </div>
 
