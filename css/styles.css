@@ -4,6 +4,9 @@ html {
   min-height: 100%;
 }
 body {
+  /* Override padding for fixed navbar in base CSS from esthermakes.tech */
+  padding-top: 0;
+
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 
