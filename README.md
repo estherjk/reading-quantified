@@ -4,9 +4,9 @@ A dashboard for analyzing my reading habits. Powered by [Metabase](https://www.m
 
 ## Related Projects
 
-* [esthers-books-ios](https://github.com/estherjk/esthers-books-ios): An iOS app for viewing my reads, built with SwiftUI (see [reading-quantified-ios](https://github.com/estherjk/reading-quantified-ios) for an older iOS app that has been archived)
-* [reading-quantified-server](https://github.com/estherjk/reading-quantified-server): A Django REST API server
-* [reading-quantified-trello](https://github.com/estherjk/reading-quantified-trello): A client that interfaces w/ the Trello & Reading Quantified APIs
+* [esthers-books-swiftui](https://github.com/estherjk/esthers-books-swiftui): A Multiplatform SwiftUI app for viewing my reads
+* [reading-quantified-trello](https://github.com/drejkim/reading-quantified-trello): Retrieves my book cards from Trello & stores in [reading-quantified-server](https://github.com/drejkim/reading-quantified-server)
+* [reading-quantified-server](https://github.com/drejkim/reading-quantified-server): A Django REST API server for requesting my books data
 
 ## Licensing notes
 
